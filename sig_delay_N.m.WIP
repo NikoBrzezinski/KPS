@@ -1,0 +1,6 @@
+function y = sig_delay_N(x, Nd)
+  N = length(x);
+  y = zeros(1, N);
+  y((Nd+1):N) = x(1:(N-Nd));
+endfunction
+
