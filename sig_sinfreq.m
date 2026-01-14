@@ -1,3 +1,3 @@
 function f = sig_sinfreq(N,fs,o)
-  f = 0*fs/N;
+  f = o*fs/N;
 endfunction

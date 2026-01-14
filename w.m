@@ -1,5 +1,3 @@
- t=[-5:0.01:5]
- x=gen_delta(t);
- plot(t,x);
- grid on;
- pause
+[b,a]=iir_onepole_LPF(0.1);
+[y,n]=flt_imp_resp(10,b,a);
+plot(n);

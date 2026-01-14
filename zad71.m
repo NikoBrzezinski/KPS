@@ -1,0 +1,78 @@
+[b,a]=iir_onepole_LPF(0.1);
+[y1,n1]=flt_imp_resp(10,b,a);
+[y2,n2]=flt_step_resp(10,b,a);
+[mH, fiH, mHdB, fc]=flt_freq_resp(10,b,a);
+
+figure(1);
+subplot(2,3,1);
+plot(n1, y1); title("LPF, fc=0.1 odpowiedź impulsowa");
+xlabel("N");
+ylabel("amplituda");
+grid on;
+subplot(2,3,2);
+plot(n2, y2); title("LPF, fc=0.1 odpowiedź skokowa");
+xlabel("N");
+ylabel("amplituda");
+grid on;
+subplot(2,3,3);
+plot(fc, mHdB); title("LPF, fc=0.1 charakterystyka amplitudowa");
+xlabel("fc");
+ylabel("mHdB");
+grid on;
+subplot(2,3,4);
+zplane(b,a);
+
+[b,a]=iir_onepole_HPF(0.1);
+[y1,n1]=flt_imp_resp(10,b,a);
+[y2,n2]=flt_step_resp(10,b,a);
+[mH, fiH, mHdB, fc]=flt_freq_resp(10,b,a);
+
+figure(2);
+subplot(2,3,1);
+plot(n1, y1); title("HPF, fc=0.1 odpowiedź impulsowa");
+xlabel("N");
+ylabel("amplituda");
+grid on;
+subplot(2,3,2);
+plot(n2, y2); title("HPF, fc=0.1 odpowiedź skokowa");
+xlabel("N");
+ylabel("amplituda");
+grid on;
+subplot(2,3,3);
+plot(fc, mHdB); title("HPF, fc=0.1 charakterystyka amplitudowa");
+xlabel("fc");
+ylabel("mHdB");
+grid on;
+subplot(2,3,4);
+zplane(b,a);
+
+[b,a]=butter(10,0.1);
+[y1,n1]=flt_imp_resp(10,b,a);
+[y2,n2]=flt_step_resp(10,b,a);
+[mH, fiH, mHdB, fc]=flt_freq_resp(10,b,a);
+
+[b2,a2]=butter(10,0.2);
+[y3,n3]=flt_imp_resp(10,b2,a2);
+[y4,n4]=flt_step_resp(10,b2,a2);
+[mH2,fiH2, mHdB2, fc2]=flt_freq_resp(10,b2,a2);
+
+figure(3);
+subplot(2,3,1);
+plot(n1, y1,n3, y3); title("butterworth, fc=0.1,0.3 odpowiedź impulsowa");
+xlabel("N");
+ylabel("amplituda");
+grid on;
+subplot(2,3,2);
+plot(n2, y2,n4, y4); title("butterworth, fc=0.1,0.3 odpowiedź skokowa");
+xlabel("N");
+ylabel("amplituda");
+grid on;
+subplot(2,3,3);
+plot(fc, mHdB,fc2,mHdB2); title("butterworth, fc=0.1,0.3 charakterystyka amplitudowa");
+xlabel("fc");
+ylabel("mHdB");
+grid on;
+subplot(2,3,3);
+zplane(b,a);
+subplot(2,3,4);
+zplane(b,a);
